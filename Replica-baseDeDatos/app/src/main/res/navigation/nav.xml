@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/lista_ciudades">
+
+    <fragment
+        android:id="@+id/lista_ciudades"
+        android:name="com.example.basedatal.Fragment_lista_ciudades"
+        android:label="fragment_lista_ciudades"
+        tools:layout="@layout/fragment_lista_ciudades" />
+    <fragment
+        android:id="@+id/ciudades"
+        android:name="com.example.basedatal.Ciudades"
+        android:label="fragment_ciudades"
+        tools:layout="@layout/fragment_ciudades" >
+        <action
+            android:id="@+id/action_ciudades_to_lista_ciudades"
+            app:destination="@id/lista_ciudades" />
+    </fragment>
+</navigation>

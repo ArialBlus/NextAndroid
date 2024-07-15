@@ -49,6 +49,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-runtime-jvm:2.7.0-alpha04")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     testImplementation("junit:junit:4.13.2")
     //room
     val room_version= "2.6.1"
