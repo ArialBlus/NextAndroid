@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,7 @@ import com.example.basedatal.adapter.CityModelFactory
 import com.example.basedatal.adapter.CityViewModel
 import com.example.basedatal.dao.DatabaseBuilder
 import com.example.basedatal.databinding.FragmentListaCiudadesBinding
+import com.example.basedatal.entities.City
 
 
 class Fragment_lista_ciudades : Fragment() {
@@ -43,12 +45,22 @@ class Fragment_lista_ciudades : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        cityListAdapter= CityAdapter(requireContext(), emptyList())
+        cityListAdapter= CityAdapter(requireContext(), emptyList(), this::onEditClick, this::onDeleteClick)
         binding.lvRegistro.adapter=cityListAdapter
 
         cityViewModel.allCities.observe(viewLifecycleOwner, Observer{
             cities -> cityListAdapter.updateCities(cities)
         })
     }
+    private fun onEditClick(city: City){
+        val bundle= Bundle()
+        bundle.putInt("city_id", city.id)
+        findNavController().navigate(R.id.EditCity, bundle)
+    }
 
+    private fun onDeleteClick(city: City){
+        cityViewModel.deleteCity(city)
+        Toast.makeText(context, "Registro eliminado", Toast.LENGTH_LONG).show()
+
+    }
 }

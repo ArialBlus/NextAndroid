@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.basedatal.R
 import com.example.basedatal.entities.City
 
-class CityAdapter(private val context: Context, private var cityList: List<City>): BaseAdapter(){
+class CityAdapter(private val context: Context, private var cityList: List<City>,
+    private val onEditClick: (City)-> Unit,
+    private val onDeleteClick: (City) ->Unit): BaseAdapter(){
     override fun getCount(): Int {
         return cityList.size
     }
@@ -30,6 +35,18 @@ class CityAdapter(private val context: Context, private var cityList: List<City>
         view.findViewById<TextView>(R.id.tvDescriptionCity).text = city.description
         view.findViewById<TextView>(R.id.tvPopulationCity).text = city.population.toString()
 
+        val btnEdit= view.findViewById<ImageButton>(R.id.btnEdit)
+        val btnDelete = view.findViewById<ImageButton>(R.id.btnDelete)
+        //binding.lvRegistros.adapter=cityListAdapter
+
+        btnEdit.setOnClickListener {
+            onEditClick(city)
+        }
+
+        //lo mismo va a eliminar
+        btnDelete.setOnClickListener {
+            onDeleteClick(city)
+        }
         return view
     }
 
@@ -37,5 +54,7 @@ class CityAdapter(private val context: Context, private var cityList: List<City>
         cityList = newCityList
         notifyDataSetChanged()
     }
+
+
 
 }

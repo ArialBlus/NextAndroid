@@ -28,4 +28,7 @@ abstract class CityDao {
 
     @Query("Select * from cities")
     abstract fun getAllCities(): LiveData<List<City>>
+
+    @Query ("Select * from cities where id= :id")
+    abstract fun getCity(id:Int): LiveData<City>
 }

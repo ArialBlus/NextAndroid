@@ -9,4 +9,7 @@
     <string name="poblacion_ciudad">poblacion Ciudad</string>
     <string name="poblacionCiudad">Poblacion Ciudad</string>
     <string name="descripcion_de_la_ciudad">Descripcion de la Ciudad</string>
+    <string name="edit">Edit</string>
+    <string name="delete">delete</string>
+    <string name="editar_registro">Editar Registro</string>
 </resources>

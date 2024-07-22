@@ -18,5 +18,19 @@
         <action
             android:id="@+id/action_ciudades_to_lista_ciudades"
             app:destination="@id/lista_ciudades" />
+        <action
+            android:id="@+id/EditCity"
+            app:destination="@id/editCity" />
+    </fragment>
+    <fragment
+        android:id="@+id/editCity"
+        android:name="com.example.basedatal.EditCity"
+        android:label="fragment_edit_city"
+        tools:layout="@layout/fragment_edit_city">
+
+
+
+
+
     </fragment>
 </navigation>
